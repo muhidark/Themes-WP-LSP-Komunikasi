@@ -12,6 +12,51 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Mobile Hamburger Menu Toggle
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const mainNav = document.getElementById('site-navigation');
+
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isOpen = mainNav.classList.toggle('is-active');
+            menuToggle.classList.toggle('is-active', isOpen);
+            menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
+                if (mainNav.classList.contains('is-active')) {
+                    mainNav.classList.remove('is-active');
+                    menuToggle.classList.remove('is-active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mainNav.classList.contains('is-active')) {
+                mainNav.classList.remove('is-active');
+                menuToggle.classList.remove('is-active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Close mobile nav when clicking a regular link inside it
+        const navLinks = mainNav.querySelectorAll('a:not(.menu-item-has-children > a)');
+        navLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    mainNav.classList.remove('is-active');
+                    menuToggle.classList.remove('is-active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    }
+
     // Mobile / Touch handling for Navigation Sub-Menu
     const menuItemsWithChildren = document.querySelectorAll('.main-navigation li.menu-item-has-children');
 

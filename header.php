@@ -78,6 +78,12 @@
                 </div>
             </div><!-- .site-branding -->
 
+            <button class="menu-toggle" id="mobile-menu-toggle" aria-controls="site-navigation" aria-expanded="false" aria-label="<?php esc_attr_e( 'Buka Menu Navigasi', 'lsp-komunikasi' ); ?>">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+
             <nav id="site-navigation" class="main-navigation">
                 <?php
                 wp_nav_menu( array(

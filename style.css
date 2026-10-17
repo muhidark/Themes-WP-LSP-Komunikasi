@@ -425,6 +425,174 @@ img {
     color: var(--secondary-color);
 }
 
+/* ==========================================================================
+   Hamburger Mobile Toggle Button (Base)
+   ========================================================================== */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px 6px;
+    z-index: 1001;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    outline: none;
+    transition: background-color 0.2s ease;
+}
+
+.menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.site-header.is-sticky .menu-toggle:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.hamburger-box {
+    width: 26px;
+    height: 20px;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+    width: 26px;
+    height: 2.5px;
+    background-color: #ffffff;
+    border-radius: 3px;
+    position: absolute;
+    transition: transform 0.28s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+                background-color 0.2s ease,
+                top 0.28s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+                opacity 0.2s ease;
+}
+
+.hamburger-inner {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hamburger-inner::before,
+.hamburger-inner::after {
+    content: '';
+    display: block;
+}
+
+.hamburger-inner::before {
+    top: -8px;
+}
+
+.hamburger-inner::after {
+    top: 8px;
+}
+
+/* Sticky Header Hamburger color */
+.site-header.is-sticky .hamburger-inner,
+.site-header.is-sticky .hamburger-inner::before,
+.site-header.is-sticky .hamburger-inner::after {
+    background-color: var(--primary-color);
+}
+
+/* Transisi menjadi ikon Silang (X) saat menu terbuka */
+.menu-toggle.is-active .hamburger-inner {
+    background-color: transparent !important;
+}
+
+.menu-toggle.is-active .hamburger-inner::before {
+    top: 0;
+    transform: rotate(45deg);
+    background-color: #ffffff;
+}
+
+.menu-toggle.is-active .hamburger-inner::after {
+    top: 0;
+    transform: rotate(-45deg);
+    background-color: #ffffff;
+}
+
+.site-header.is-sticky .menu-toggle.is-active .hamburger-inner::before,
+.site-header.is-sticky .menu-toggle.is-active .hamburger-inner::after {
+    background-color: var(--primary-color);
+}
+
+/* ==========================================================================
+   Highlight / CTA Button - Ujung Paling Kanan Navbar (Desktop & Tablet)
+   ========================================================================== */
+@media (min-width: 769px) {
+    .main-navigation > ul > li:last-child > a,
+    .main-navigation > div > ul > li:last-child > a,
+    .main-navigation li.menu-btn > a,
+    .main-navigation li.menu-btn-highlight > a {
+        background: linear-gradient(135deg, #f89b29 0%, #e07e10 100%);
+        color: #ffffff !important;
+        font-weight: 700 !important;
+        font-size: 13.5px !important;
+        letter-spacing: 0.3px;
+        padding: 9px 22px !important;
+        border-radius: 50px !important;
+        box-shadow: 0 4px 14px rgba(248, 155, 41, 0.38);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    }
+
+    .main-navigation > ul > li:last-child > a:hover,
+    .main-navigation > div > ul > li:last-child > a:hover,
+    .main-navigation li.menu-btn > a:hover,
+    .main-navigation li.menu-btn-highlight > a:hover {
+        background: linear-gradient(135deg, #fbaf4b 0%, #f89b29 100%);
+        color: #ffffff !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(248, 155, 41, 0.55);
+    }
+
+    /* Sticky Header CTA Button (White Header) */
+    .site-header.is-sticky .main-navigation > ul > li:last-child > a,
+    .site-header.is-sticky .main-navigation > div > ul > li:last-child > a,
+    .site-header.is-sticky .main-navigation li.menu-btn > a,
+    .site-header.is-sticky .main-navigation li.menu-btn-highlight > a {
+        background: linear-gradient(135deg, var(--primary-color) 0%, #8c1d22 100%);
+        color: #ffffff !important;
+        border: none;
+        box-shadow: 0 4px 14px rgba(114, 22, 26, 0.3);
+    }
+
+    .site-header.is-sticky .main-navigation > ul > li:last-child > a:hover,
+    .site-header.is-sticky .main-navigation > div > ul > li:last-child > a:hover,
+    .site-header.is-sticky .main-navigation li.menu-btn > a:hover,
+    .site-header.is-sticky .main-navigation li.menu-btn-highlight > a:hover {
+        background: linear-gradient(135deg, #8c1d22 0%, #a02329 100%);
+        box-shadow: 0 6px 18px rgba(114, 22, 26, 0.45);
+    }
+}
+
+/* Tablet Optimizations (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .main-navigation > ul,
+    .main-navigation > div > ul {
+        gap: 14px;
+    }
+    .main-navigation > ul > li > a,
+    .main-navigation > div > ul > li > a {
+        font-size: 13.5px;
+        padding: 8px 0;
+    }
+    .main-navigation > ul > li:last-child > a,
+    .main-navigation > div > ul > li:last-child > a,
+    .main-navigation li.menu-btn > a,
+    .main-navigation li.menu-btn-highlight > a {
+        padding: 8px 16px !important;
+        font-size: 13px !important;
+    }
+}
+
 /* Parallax Banner */
 .parallax-banner {
     position: relative;
@@ -800,51 +968,192 @@ img {
         flex-wrap: wrap;
     }
 
+    /* Header Inner on Mobile (Baris horizontal dengan Logo di kiri dan Hamburger di kanan) */
     .header-inner {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 20px;
+        position: relative;
     }
 
-    /* Mobile Nav Bar & Sub-menu */
+    .header-logo .custom-logo {
+        max-height: 42px;
+        width: auto;
+    }
+
+    .site-branding .site-title a {
+        font-size: 19px;
+    }
+
+    /* Tampilkan Tombol Hamburger di Mobile */
+    .menu-toggle {
+        display: inline-flex;
+    }
+
+    /* Mobile Collapsible Navigation Drawer */
+    .main-navigation {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+                    opacity 0.25s ease,
+                    visibility 0.25s ease;
+        z-index: 9999;
+    }
+
+    .site-header.is-sticky .main-navigation {
+        background-color: #ffffff;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15);
+    }
+
+    .main-navigation.is-active {
+        max-height: 80vh;
+        overflow-y: auto;
+        opacity: 1;
+        visibility: visible;
+        -webkit-overflow-scrolling: touch;
+    }
+
     .main-navigation > ul,
     .main-navigation > div > ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px 18px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 0 16px;
+        margin: 0;
     }
 
+    .main-navigation > ul > li,
+    .main-navigation > div > ul > li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .site-header.is-sticky .main-navigation > ul > li,
+    .site-header.is-sticky .main-navigation > div > ul > li {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .main-navigation > ul > li > a,
+    .main-navigation > div > ul > li > a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 13px 22px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #ffffff;
+        width: 100%;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        box-sizing: border-box;
+    }
+
+    .site-header.is-sticky .main-navigation > ul > li > a,
+    .site-header.is-sticky .main-navigation > div > ul > li > a {
+        color: var(--text-color);
+    }
+
+    .main-navigation > ul > li > a:hover,
+    .main-navigation > div > ul > li > a:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--secondary-color);
+    }
+
+    .site-header.is-sticky .main-navigation > ul > li > a:hover,
+    .site-header.is-sticky .main-navigation > div > ul > li > a:hover {
+        background: #f8f9fa;
+        color: var(--primary-color);
+    }
+
+    /* Sub-menu on Mobile */
     .main-navigation ul.sub-menu {
         position: static;
         width: 100%;
         min-width: 100%;
         box-shadow: none;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: 6px;
+        border: none;
+        background: rgba(0, 0, 0, 0.16);
+        border-left: 3px solid var(--secondary-color);
+        border-radius: 0;
         transform: none;
         display: none;
-        margin-top: 8px;
+        margin: 0;
+        padding: 4px 0;
+    }
+
+    .site-header.is-sticky .main-navigation ul.sub-menu {
+        background: #f1f3f5;
+        border-left-color: var(--primary-color);
+    }
+
+    .main-navigation li.menu-item-has-children.is-touch-open > ul.sub-menu {
+        display: block;
     }
 
     .main-navigation ul.sub-menu a {
-        color: #ffffff !important;
-        padding: 8px 14px;
-        text-align: center;
-        justify-content: center;
+        color: rgba(255, 255, 255, 0.9) !important;
+        padding: 10px 22px 10px 36px;
+        font-size: 14px;
+        text-align: left;
+        justify-content: flex-start;
+        display: block;
+    }
+
+    .site-header.is-sticky .main-navigation ul.sub-menu a {
+        color: #444444 !important;
     }
 
     .main-navigation ul.sub-menu a:hover {
-        background: rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.12);
         color: var(--secondary-color) !important;
     }
 
-    .main-navigation li.menu-item-has-children:hover > ul.sub-menu,
-    .main-navigation li.menu-item-has-children.is-touch-open > ul.sub-menu,
-    .main-navigation li.menu-item-has-children:focus-within > ul.sub-menu {
-        display: flex;
-        opacity: 1;
-        visibility: visible;
+    .site-header.is-sticky .main-navigation ul.sub-menu a:hover {
+        background: #e9ecef;
+        color: var(--primary-color) !important;
+    }
+
+    /* Highlight Button in Mobile Drawer */
+    .main-navigation > ul > li:last-child,
+    .main-navigation > div > ul > li:last-child,
+    .main-navigation li.menu-btn,
+    .main-navigation li.menu-btn-highlight {
+        border-bottom: none;
+        padding: 12px 20px 4px;
+    }
+
+    .main-navigation > ul > li:last-child > a,
+    .main-navigation > div > ul > li:last-child > a,
+    .main-navigation li.menu-btn > a,
+    .main-navigation li.menu-btn-highlight > a {
+        background: linear-gradient(135deg, #f89b29 0%, #e07e10 100%);
+        color: #ffffff !important;
+        font-weight: 700;
+        text-align: center;
+        justify-content: center;
+        border-radius: 50px;
+        padding: 12px 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .site-header.is-sticky .main-navigation > ul > li:last-child > a,
+    .site-header.is-sticky .main-navigation > div > ul > li:last-child > a,
+    .site-header.is-sticky .main-navigation li.menu-btn > a,
+    .site-header.is-sticky .main-navigation li.menu-btn-highlight > a {
+        background: linear-gradient(135deg, var(--primary-color) 0%, #8c1d22 100%);
+        color: #ffffff !important;
     }
 
     .parallax-banner {
